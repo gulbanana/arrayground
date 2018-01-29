@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <array>
+#include <vector>
 using namespace std;
 
 #define COLUMNS 18 * 30
@@ -118,3 +119,34 @@ static void std_array(picobench::state& s)
     volatile long barrier = sum;
 }
 PICOBENCH(std_array); 
+
+static void std_vector(picobench::state& s)
+{
+    // init
+    vector<vector<long>> values;
+    for (auto y = 0; y < ROWS; y++)
+    {
+        vector<long> row;
+        for (auto x = 0; x < COLUMNS; x++)
+        {
+            row.push_back(y * COLUMNS + x);
+        }
+        values.push_back(row);
+    }
+
+    // benchmark
+    long sum = 0;
+    for (auto _ : s)
+    {
+        for (auto y = 0; y < ROWS; y++)
+        {
+            for (auto x = 0; x < COLUMNS; x++)
+            {
+                sum += values[y][x];
+            }
+        }
+    }
+
+    volatile long barrier = sum;
+}
+PICOBENCH(std_vector); 
