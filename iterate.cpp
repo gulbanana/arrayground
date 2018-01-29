@@ -1,7 +1,6 @@
 #define PICOBENCH_IMPLEMENT_WITH_MAIN
 #include "picobench/picobench.hpp"
 
-#include <iostream>
 #include <array>
 #include <vector>
 using namespace std;
