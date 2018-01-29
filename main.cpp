@@ -4,8 +4,8 @@
 #include <iostream>
 using namespace std;
 
-#define COLUMNS 18 * 1
-#define ROWS 16 * 100
+#define COLUMNS 18 * 30
+#define ROWS 16 * 30
 #define LENGTH ROWS * COLUMNS
 
 static void c_array_singledim(picobench::state& s)
